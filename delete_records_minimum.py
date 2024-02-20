@@ -51,11 +51,11 @@ def delete_records(records, min_date):
         url = f'https://api.airtable.com/v0/{base_id}/{table_name}?' + '&'.join([f'records[]={id}' for id in batch])
         response = requests.delete(url, headers=headers)
         
-        # # Handle response and errors
-        # if response.status_code == 200:
-        #     print(f'Successfully deleted batch: {batch}')
-        # else:
-        #     print(f'Error deleting batch: {batch}. Response: {response.text}')
+        # Handle response and errors
+        if response.status_code == 200:
+            print(f'Successfully deleted batch: {batch}')
+        else:
+            print(f'Error deleting batch: {batch}. Response: {response.text}')
 
 if min_date:
     delete_records(all_records, min_date)
